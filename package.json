@@ -21,7 +21,8 @@
     "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --maxWorkers=3",
     "test:coverage": "react-scripts test --watchAll=false --coverage --no-cache --logHeapUsage --silent --maxWorkers=2",
