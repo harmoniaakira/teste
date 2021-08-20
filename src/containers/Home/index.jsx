@@ -4,17 +4,31 @@ import { Container, Title } from './styles'
 import axios from 'axios'
 import { geolocated } from "react-geolocated";
 
+const userGeolocationInitState = {
+  coords: {
+    longitude: 0,
+    latitude: 0
+  },
+  timestamp: 0
+}
+
 const Home = (props) => {
   const { t } = useTranslation()
   const [userData, setUserData] = useState('');
+  const [userGeolocation, setUserGeolocation] = useState(userGeolocationInitState);
 
   const getData = async () => {
     const res = await axios.get('https://ipapi.co/json/');
     setUserData(res.data);
   }
   
+  const success = (pos) => {
+    setUserGeolocation(pos)
+  }
+
   useEffect( () => {
     getData();
+    navigator.geolocation.getCurrentPosition(success);
   }, [])
 
   return (
@@ -22,6 +36,12 @@ const Home = (props) => {
       <Title color="primary" component="h1" variant="h4" gutterBottom>
         <Trans>{t('general.welcome')}</Trans>
       </Title>
+      <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
+      <span><strong>Javascript:</strong> navigaror.geolocation</span><br/><br/>
+      <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
+      <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
+      <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
+      </div><br/><br/>
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
         <span><strong>API:</strong> https://ipapi.co/json/</span><br/><br/>
         <span><strong>ip :</strong> {userData.ip}</span><br/>
