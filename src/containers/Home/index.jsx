@@ -38,6 +38,7 @@ const Home = (props) => {
       </Title>
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
       <span><strong>Javascript:</strong> navigaror.geolocation</span><br/><br/>
+      <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/>
       <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
       <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
       <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
