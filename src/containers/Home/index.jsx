@@ -38,6 +38,12 @@ const Home = (props) => {
       </Title>
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
       <span><strong>Javascript:</strong> navigaror.geolocation</span><br/><br/>
+      <span><strong>appCodeName:</strong>{navigator.appCodeName}</span><br/>
+      <span><strong>appName:</strong>{navigator.appName}</span><br/>
+      <span><strong>appVersion:</strong>{navigator.appVersion}</span><br/>
+      <span><strong>platform:</strong>{navigator.platform}</span><br/>
+      <span><strong>product:</strong>{navigator.product}</span><br/>
+      <span><strong>vendor:</strong>{navigator.vendor}</span><br/>
       <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/>
       <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
       <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
