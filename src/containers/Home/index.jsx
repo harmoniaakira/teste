@@ -3,6 +3,18 @@ import { Trans, useTranslation } from 'react-i18next'
 import { Container, Title } from './styles'
 import axios from 'axios'
 import { geolocated } from "react-geolocated";
+import {
+  osVersion,
+  osName,
+  fullBrowserVersion,
+  browserVersion,
+  browserName,
+  mobileVendor,
+  mobileModel,
+  engineName,
+  engineVersion,
+  deviceType
+} from "react-device-detect";
 
 const userGeolocationInitState = {
   coords: {
@@ -37,7 +49,23 @@ const Home = (props) => {
         <Trans>{t('general.welcome')}</Trans>
       </Title>
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
-      <span><strong>Javascript:</strong> navigaror.geolocation</span><br/><br/>
+        <span><strong>https://www.npmjs.com/package/react-device-detect</strong></span><br/><br/>
+        <span><strong>osVersion: </strong>{osVersion}</span><br/>
+        <span><strong>osName: </strong>{osName}</span><br/>
+        <span><strong>fullBrowserVersion: </strong>{fullBrowserVersion}</span><br/>
+        <span><strong>browserVersion: </strong>{browserVersion}</span><br/>
+        <span><strong>browserName: </strong>{browserName}</span><br/>
+        <span><strong>mobileVendor: </strong>{mobileVendor}</span><br/>
+        <span><strong>mobileModel: </strong>{mobileModel}</span><br/>
+        <span><strong>engineName: </strong>{engineName}</span><br/>
+        <span><strong>engineVersion: </strong>{engineVersion}</span><br/>
+        <span><strong>deviceType: </strong>{deviceType}</span><br/><br/>
+      </div>
+
+      <div style={{width: '360px', height: '1px', backgroundColor: 'black', margin: '0 auto'}}></div><br/>
+
+      <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
+      <span><strong>Javascript:</strong> navigator.geolocation & userAgent</span><br/><br/>
       <span><strong>appCodeName:</strong>{navigator.appCodeName}</span><br/>
       <span><strong>appName:</strong>{navigator.appName}</span><br/>
       <span><strong>appVersion:</strong>{navigator.appVersion}</span><br/>
@@ -49,6 +77,9 @@ const Home = (props) => {
       <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
       <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
       </div><br/><br/>
+
+      <div style={{width: '360px', height: '1px', backgroundColor: 'black', margin: '0 auto'}}></div><br/>
+
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
         <span><strong>API:</strong> https://ipapi.co/json/</span><br/><br/>
         <span><strong>ip :</strong> {userData.ip}</span><br/>
@@ -78,6 +109,8 @@ const Home = (props) => {
         <span><strong>asn :</strong> {userData.asn}</span><br/>
         <span><strong>org :</strong> {userData.org}</span><br/><br/>
       </div>
+      
+      <div style={{width: '360px', height: '1px', backgroundColor: 'black', margin: '0 auto'}}></div><br/>
 
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
         <span><strong>https://www.npmjs.com/package/react-geolocated</strong></span><br/><br/>
