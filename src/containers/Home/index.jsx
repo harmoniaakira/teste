@@ -39,10 +39,15 @@ const Home = (props) => {
 
   useEffect( () => {
     getData();
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, 
+        err => {
+          alert('ERROR: ' + err.code);
+        }
+      );
     } else {
-      console.log("Geolocation not supported by browser");
+        alert('Geolocation API is not supported!');
     }
   }, [])
 
