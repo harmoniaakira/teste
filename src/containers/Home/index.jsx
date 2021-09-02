@@ -37,14 +37,18 @@ const Home = (props) => {
     setUserGeolocation(pos)
   }
 
-  useEffect( () => {
-    getData();
-
+  const getCurrentPosition = () => {
+    console.log('getting position');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success);
     } else {
         alert('Geolocation API is not supported!');
     }
+  }
+
+  useEffect( () => {
+    getData();
+    getCurrentPosition();
   }, [])
 
   return (
@@ -61,7 +65,8 @@ const Home = (props) => {
       <span><strong>platform:</strong>{navigator.platform}</span><br/>
       <span><strong>product:</strong>{navigator.product}</span><br/>
       <span><strong>vendor:</strong>{navigator.vendor}</span><br/>
-      <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/>
+      <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/><br/>
+      <button onClick={getCurrentPosition}>getCurrentPosition</button><br/>
       <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
       <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
       <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
