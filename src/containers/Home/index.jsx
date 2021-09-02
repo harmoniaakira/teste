@@ -41,12 +41,7 @@ const Home = (props) => {
     getData();
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        success, 
-        err => {
-          alert('ERROR: ' + err.code + ' ' + err.message);
-        }
-      );
+      navigator.geolocation.getCurrentPosition(success);
     } else {
         alert('Geolocation API is not supported!');
     }
