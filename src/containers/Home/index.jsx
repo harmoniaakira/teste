@@ -44,7 +44,7 @@ const Home = (props) => {
       navigator.geolocation.getCurrentPosition(
         success, 
         err => {
-          alert('ERROR: ' + err.code);
+          alert('ERROR: ' + err.code + ' ' + err.message);
         }
       );
     } else {
