@@ -32,9 +32,18 @@ These are some of patterns definitions to help us to keep a default configuratio
 
 - NPM or Yarn? We chose `npm`, but feel free to make your choice;
 - UI Kit library? Jump into [MaterialUI](https://material-ui.com);
+- For more complex component stylization [Styled Components](https://styled-components.com);
+- Internationalization framework [https://react.i18next.com](https://react.i18next.com);
 - Linter: Identifying and reporting on ECMAScript/JavaScript patterns [ESLint](https://eslint.org);
+- [Why react-scripts?](https://create-react-app.dev/docs/getting-started/)
 - [Why Axios?](https://github.com/axios/axios#features)
 - [Why Material?](https://material-ui.com/blog/material-ui-v4-is-out)
+
+Redux or Hooks/Context Api?
+
+- Redux is Perfect for larger applications where there are high-frequency state updates.
+- Context Api resourceful and ideal for small applications where state changes are minimal.
+
 
 ## :open_file_folder: Project structure
 
