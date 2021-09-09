@@ -48,7 +48,6 @@ const Home = (props) => {
 
   useEffect( () => {
     getData();
-    navigator.permissions.revoke({name:'geolocation'})
     getCurrentPosition();
   }, [])
 
