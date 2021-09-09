@@ -14,6 +14,7 @@ import {
   engineVersion,
   deviceType
 } from "react-device-detect";
+import { geolocated } from "react-geolocated";
 
 const userGeolocationInitState = {
   coords: {
@@ -48,7 +49,7 @@ const Home = (props) => {
 
   useEffect( () => {
     getData();
-    getCurrentPosition();
+    //getCurrentPosition();
   }, [])
 
   return (
@@ -57,7 +58,7 @@ const Home = (props) => {
         <Trans>{t('general.welcome')}</Trans>
       </Title>
       
-      <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
+      {/* <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
       <span><strong>Javascript:</strong> navigator.geolocation & userAgent</span><br/><br/>
       <span><strong>appCodeName:</strong>{navigator.appCodeName}</span><br/>
       <span><strong>appName:</strong>{navigator.appName}</span><br/>
@@ -70,7 +71,44 @@ const Home = (props) => {
       <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
       <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
       <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
-      </div><br/><br/>
+      </div><br/><br/> */}
+
+      <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
+        <span><strong>https://www.npmjs.com/package/react-geolocated</strong></span><br/><br/>
+        {
+          !props.isGeolocationAvailable ? (
+                <div>Your browser does not support Geolocation</div>
+            ) : !props.isGeolocationEnabled ? (
+                <div>Geolocation is not enabled</div>
+            ) : props.coords ? (
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>latitude</td>
+                            <td>{props.coords.latitude}</td>
+                        </tr>
+                        <tr>
+                            <td>longitude</td>
+                            <td>{props.coords.longitude}</td>
+                        </tr>
+                        <tr>
+                            <td>altitude</td>
+                            <td>{props.coords.altitude}</td>
+                        </tr>
+                        <tr>
+                            <td>heading</td>
+                            <td>{props.coords.heading}</td>
+                        </tr>
+                        <tr>
+                            <td>speed</td>
+                            <td>{props.coords.speed}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            ) : (
+                <div>Getting the location data&hellip; </div>
+            )}
+      </div>
 
       <div style={{width: '360px', height: '1px', backgroundColor: 'black', margin: '0 auto'}}></div><br/>
 
@@ -123,4 +161,9 @@ const Home = (props) => {
   )
 }
 
-export default Home;
+export default geolocated({
+  positionOptions: {
+      enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(Home);
