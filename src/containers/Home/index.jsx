@@ -39,7 +39,6 @@ const Home = (props) => {
   }
 
   const getCurrentPosition = () => {
-    console.log('getting position');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success);
     } else {
@@ -49,7 +48,8 @@ const Home = (props) => {
 
   useEffect( () => {
     getData();
-    //getCurrentPosition();
+    navigator.permissions.revoke({name:'geolocation'})
+    getCurrentPosition();
   }, [])
 
   return (
@@ -58,22 +58,22 @@ const Home = (props) => {
         <Trans>{t('general.welcome')}</Trans>
       </Title>
       
-      {/* <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
-      <span><strong>Javascript:</strong> navigator.geolocation & userAgent</span><br/><br/>
-      <span><strong>appCodeName:</strong>{navigator.appCodeName}</span><br/>
-      <span><strong>appName:</strong>{navigator.appName}</span><br/>
-      <span><strong>appVersion:</strong>{navigator.appVersion}</span><br/>
-      <span><strong>platform:</strong>{navigator.platform}</span><br/>
-      <span><strong>product:</strong>{navigator.product}</span><br/>
-      <span><strong>vendor:</strong>{navigator.vendor}</span><br/>
-      <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/><br/>
-      <button onClick={getCurrentPosition}>getCurrentPosition</button><br/>
-      <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
-      <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
-      <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
-      </div><br/><br/> */}
-
       <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
+        <span><strong>Javascript:</strong> navigator.geolocation & userAgent</span><br/><br/>
+        <span><strong>appCodeName:</strong>{navigator.appCodeName}</span><br/>
+        <span><strong>appName:</strong>{navigator.appName}</span><br/>
+        <span><strong>appVersion:</strong>{navigator.appVersion}</span><br/>
+        <span><strong>platform:</strong>{navigator.platform}</span><br/>
+        <span><strong>product:</strong>{navigator.product}</span><br/>
+        <span><strong>vendor:</strong>{navigator.vendor}</span><br/>
+        <span><strong>userAgent:</strong>{navigator.userAgent}</span><br/><br/>
+        <button onClick={getCurrentPosition}>getCurrentPosition</button><br/>
+        <span><strong>latitude :</strong> {userGeolocation.coords.latitude}</span><br/>
+        <span><strong>longitude :</strong> {userGeolocation.coords.longitude}</span><br/>
+        <span><strong>timestamp :</strong> {userGeolocation.timestamp}</span>
+      </div><br/><br/>
+
+      {/* <div style={{textAlign: 'left', margin: '0 auto', width: '360px'}}>
         <span><strong>https://www.npmjs.com/package/react-geolocated</strong></span><br/><br/>
         {
           !props.isGeolocationAvailable ? (
@@ -108,7 +108,7 @@ const Home = (props) => {
             ) : (
                 <div>Getting the location data&hellip; </div>
             )}
-      </div>
+      </div> */}
 
       <div style={{width: '360px', height: '1px', backgroundColor: 'black', margin: '0 auto'}}></div><br/>
 
