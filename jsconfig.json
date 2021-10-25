@@ -3,8 +3,9 @@
     "target": "es6",
     "baseUrl": "src",
     "jsx": "react",
+    "module": "commonjs",
     "paths": {
-      "*": ["src/*"]
+      "*": ["*", "src/*"]
     }
   },
   "exclude": [

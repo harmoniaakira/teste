@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should useContext mock and shallow render a div tag 1`] = `
+<styled.div>
+  <styled.div
+    $padding="0 0 40px 0"
+  >
+    <AppHeader
+      avatar="SvgrURL"
+    />
+    <Greetings />
+    <Memo(Steps) />
+    <Button
+      disabled={false}
+      handleClick={[Function]}
+      popup={false}
+    >
+      Continuar
+    </Button>
+  </styled.div>
+  <Web>
+    <styled.div>
+      <styled.img
+        src="SvgrURL"
+      />
+      <Greetings />
+      <Memo(Steps) />
+      <Button
+        disabled={false}
+        handleClick={[Function]}
+        popup={false}
+      >
+        Continuar
+      </Button>
+    </styled.div>
+  </Web>
+</styled.div>
+`;

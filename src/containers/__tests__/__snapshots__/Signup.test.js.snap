@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup should match snapshot 1`] = `
+<Fragment>
+  <styled.div>
+    <SignupFeedBack
+      shouldRender={false}
+    />
+    <styled.div
+      $hide={false}
+    >
+      <Memo(Stepper)
+        infoButton={true}
+      />
+      <FormSignup />
+    </styled.div>
+  </styled.div>
+  <Web>
+    <SignupFeedBack
+      shouldRender={false}
+    />
+    <styled.div
+      $hide={false}
+    >
+      <styled.div>
+        <Styled(Component)
+          onClick={[Function]}
+        />
+        <styled.div>
+          Preencha os campos com as informações do cliente
+        </styled.div>
+      </styled.div>
+      <FormSignup />
+    </styled.div>
+  </Web>
+  <DialogSignup />
+</Fragment>
+`;
