@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { 
     SCREEN_SEND_PHOTO_INTRO,
     SCREEN_SEND_PHOTO
- } from 'containers/SendPhoto/constants';
+ } from 'containers/Home/constants';
 
 const SendPhotoContext = createContext({
     isDialogSendPhotoOpen: false,
