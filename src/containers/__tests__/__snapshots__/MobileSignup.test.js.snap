@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mobile Signup should match snaptshot 1`] = `
+<styled.div>
+  <Styled(WithStyles(ForwardRef(TextField)))
+    $placeholderghost={true}
+    InputLabelProps={
+      Object {
+        "shrink": true,
+      }
+    }
+    error={true}
+    fullWidth={true}
+    helperText="CPF Inválido"
+    label="CPF"
+    onChange={[Function]}
+    placeholder="000.000.000-00"
+    value=""
+  />
+  <Styled(WithStyles(ForwardRef(TextField)))
+    error={false}
+    fullWidth={true}
+    helperText=""
+    label="Data de nascimento igual à identidade"
+    onChange={[Function]}
+    value=""
+  />
+  <Styled(WithStyles(ForwardRef(TextField)))
+    fullWidth={true}
+    label="Informe um número de celular válido"
+    onChange={[Function]}
+    value="("
+  />
+  <styled.div>
+    Este número de celular possui WhatsApp?
+    <Styled(WithStyles(ForwardRef(Switch))) />
+  </styled.div>
+  <Styled(WithStyles(ForwardRef(TextField)))
+    error={false}
+    fullWidth={true}
+    helperText=""
+    label="Coloque aqui o e-mail principal do cliente"
+    onBlur={[Function]}
+  />
+  <WithStyles(ForwardRef(FormControl))>
+    <Styled(WithStyles(ForwardRef(InputLabel)))
+      id="select-special-needs"
+    >
+      Possui necessidade especial? 
+    </Styled(WithStyles(ForwardRef(InputLabel)))>
+    <Styled(WithStyles(ForwardRef(Select)))
+      IconComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": e {
+            "baseHash": -493225284,
+            "baseStyle": undefined,
+            "componentId": "sc-iqHYmW",
+            "isStatic": false,
+            "rules": Array [
+              "
+    color: #054375;
+",
+            ],
+            "staticRulesId": "",
+          },
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "sc-iqHYmW",
+          "target": Object {
+            "$$typeof": Symbol(react.memo),
+            "compare": null,
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+          },
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      labelId="select-special-needs"
+    >
+      <WithStyles(ForwardRef(MenuItem))
+        value={10}
+      >
+        Não
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        value={20}
+      >
+        Dificuldade de visão
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        value={30}
+      >
+        Dificuldade de audição e/ou fala
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        value={40}
+      >
+        Limitações motoras
+      </WithStyles(ForwardRef(MenuItem))>
+    </Styled(WithStyles(ForwardRef(Select)))>
+  </WithStyles(ForwardRef(FormControl))>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+         Aceites e permissões 
+      </styled.div>
+      <styled.div>
+        Para continuar, garanta que o cliente está ciente das opções abaixo.
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Consulta sistemas de analise crédito
+        <Styled(WithStyles(ForwardRef(Checkbox)))
+          $colorone="#FFFFFF"
+          $colortwo="#757575"
+          checkedIcon={<Memo />}
+          color="primary"
+          onChange={[Function]}
+          value={false}
+        />
+      </styled.div>
+      <styled.div>
+        Informe o cliente que ao fazer a consulta de dados no Banco Central, sua condição de crédito poderá melhorar e isso facilitará na análise da proposta.
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <Styled(Component) />
+    <Button
+      disabled={true}
+      handleClick={[Function]}
+      popup={false}
+    >
+      Continuar
+    </Button>
+  </styled.div>
+</styled.div>
+`;

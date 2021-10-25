@@ -1,4 +1,4 @@
-import general from './general'
+import general from './general.json'
 
 export default {
   general

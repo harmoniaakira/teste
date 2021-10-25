@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Geolocation should render Geolocation page 1`] = `
+<styled.div>
+  <styled.div
+    $padding="0 0 40px 0"
+  >
+    <AppHeader
+      avatar="SvgrURL"
+    />
+    <styled.div>
+      <styled.h2>
+        Compartilhe sua localização
+      </styled.h2>
+      <styled.p
+        centered={true}
+      >
+        Para prosseguirmos com a proposta, precisamos da sua permissão. :)
+      </styled.p>
+      <styled.div>
+        <styled.div>
+           Autorizo compartilhar minha localização e dados do aparelho. 
+        </styled.div>
+        <Styled(WithStyles(ForwardRef(Checkbox)))
+          onChange={[Function]}
+          value={false}
+        />
+      </styled.div>
+      <styled.p>
+        É necessário aceitar somente uma vez.
+      </styled.p>
+      <Button
+        disabled={false}
+        handleClick={[Function]}
+        popup={false}
+      >
+        Continuar
+      </Button>
+    </styled.div>
+  </styled.div>
+  <Web>
+    <styled.div>
+      <styled.div>
+        <styled.img
+          src="SvgrURL"
+        />
+        <div>
+          <styled.h2>
+            Compartilhe sua localização
+          </styled.h2>
+          <styled.p>
+            Para prosseguirmos com a proposta, precisamos da sua permissão. :)
+          </styled.p>
+          <styled.div>
+            <styled.div>
+               Autorizo compartilhar minha localização e dados do aparelho. 
+            </styled.div>
+            <Styled(WithStyles(ForwardRef(Checkbox)))
+              onChange={[Function]}
+              value={false}
+            />
+          </styled.div>
+          <styled.p>
+            É necessário aceitar somente uma vez.
+          </styled.p>
+        </div>
+      </styled.div>
+      <Button
+        disabled={false}
+        handleClick={[Function]}
+        popup={false}
+      >
+        Continuar
+      </Button>
+    </styled.div>
+  </Web>
+  <Memo(DialogSlide)
+    cancelButtonLabel="voltar"
+    confirmButtonLabel="continuar"
+    handleClose={[Function]}
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    open={true}
+    title="Atenção"
+  >
+    Sem aceitar compartilhar a localização, a solicitação estará sujeita a análise diferenciada da proposta. Deseja seguir sem compartilhar a localização?
+  </Memo(DialogSlide)>
+</styled.div>
+`;
