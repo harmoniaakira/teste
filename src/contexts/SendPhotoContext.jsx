@@ -1,14 +1,13 @@
 import React, { useState, createContext, useContext } from 'react'
 import PropTypes from 'prop-types';
-import { 
-    SCREEN_SEND_PHOTO_INTRO,
+import {
     SCREEN_SEND_PHOTO
  } from 'containers/Home/constants';
 
 const SendPhotoContext = createContext({
     isDialogSendPhotoOpen: false,
     setIsDialogSendPhotoOpen: () => null,
-    screen: SCREEN_SEND_PHOTO_INTRO,
+    screen: SCREEN_SEND_PHOTO,
     setScreen: () => null
 });
 
