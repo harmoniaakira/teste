@@ -1,35 +1,47 @@
 import { ContainerPage } from 'components/Layout/Layout.styles'
-import { useSendPhotoScreen } from 'contexts/SendPhotoContext'
-import React from 'react'
-import SendPhotoIntro from './Intro'
-import TakePhoto from './TakePhoto'
+import { MobileView } from 'components/Layout/Layout.styles'
+import Stepper from 'components/Stepper'
+import React, {useEffect, useRef} from 'react'
 import {
-  SCREEN_SEND_PHOTO_INTRO,
-  SCREEN_SEND_PHOTO
-} from './constants'
+  CameraWrapper,
+  Camera,
+  FrameWrapper,
+  Frame
+} from './Home.styles'
 
-const SendPhoto = () => {
-  const { screen } = useSendPhotoScreen()
+const Home = () => {
+  const cameraRef = useRef(null)
 
-  const switchContent = () => {
-
-    switch (screen) {
-      case SCREEN_SEND_PHOTO_INTRO:
-        return <SendPhotoIntro />
-
-      case SCREEN_SEND_PHOTO:
-        return <TakePhoto />
-
-      default:
-        return <SendPhotoIntro />
-    }
+  const getCamera = () => {
+      navigator.mediaDevices.getUserMedia({
+          video: true
+      })
+      .then(stream => {
+          const video = cameraRef.current;
+          video.srcObject = stream;
+          video.play();
+      }).catch(err => {
+          console.log('Error: ', err);
+      })
   }
+
+  useEffect(() => {
+    getCamera();
+  }, [cameraRef])
 
   return (
     <ContainerPage>
-      {switchContent()}
+      <MobileView>
+        <Stepper />
+        <CameraWrapper>
+            <Camera ref={cameraRef}/>
+            <FrameWrapper>
+                <Frame />
+            </FrameWrapper>
+        </CameraWrapper>
+      </MobileView>
     </ContainerPage>
   )
 }
 
-export default SendPhoto;
+export default Home;
