@@ -19,6 +19,7 @@ const portrait_height = 640;
 const landscape_width = 1280;
 const landscape_height = 720;
 const autocapture_roi_line_width = 5;
+const autocapture_roi_portrait_top_margin = 10;
 
 const calculateROI_payload = {
   preface: {
@@ -52,12 +53,16 @@ const media_constraints_mobile_template = {
 };
 
 const Home = () => {
-  const [autocaptureROI, setAutocaptureROI] = useState(null)
-  const [constraints_json, setConstraints_json] = useState(null)
+  const [autocaptureROI, setAutocaptureROI] = useState({height: 0,
+    width: 0,
+    x: 0,
+    y: 0
+  })
+  const [constraints_json, setConstraints_json] = useState({video: true})
   const [appOrientation, setAppOrientation] = useState(null)
   const [previewWidth, setPreviewWidth] = useState(null)
   const [previewHeight, setPreviewHeight] = useState(null)
-  const [error, setError] = useState();
+  const [error, setError] = useState()
   const cameraRef = useRef(null)
   const frameRef = useRef(null)
 
@@ -174,57 +179,20 @@ const Home = () => {
     ctx.stroke();
   }
 
-  const handleMediaInitializeError = (error) => {
-    if(error) {
-      eName = (error.name) ? error.name : '';
-      eMessage = (error.message) ? error.message : '';
-      eString = (error.toString()) ? error.toString() : '';
-    }
-    eReturn = "Error initializing media, check if camera is connected.";
-    if(eName === 'OverconstrainedError') {
-      eReturn = 'Error initializing media, camera resolution is insufficient.';
-    }
-    console.log('The following error occurred when trying to use getUserMedia: ' +
-      'error name: ' + eName + ', error message: ' + eMessage + ', error full string: ' + eString);
-    
-    return Promise.reject(eReturn);
-  }
-
   const handleMediaInitializeSuccess = (localMediaStream) => {
     const video = cameraRef.current;
     video.srcObject = localMediaStream;
   }
 
   const initializeVideo = () => {
-    if (navigator.mediaDevices === undefined) {
-      navigator.mediaDevices = {};
-    }
-
-    if (navigator.mediaDevices.getUserMedia === undefined) {
-      navigator.mediaDevices.getUserMedia = (constraints) => {
-        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-        if (!getUserMedia) {
-          return Promise.reject(new Error("getUserMedia is not implemented in this browser"));
-        }
-
-        return new Promise((resolve, reject) => {
-            getUserMedia.call(navigator, constraints, resolve, reject);
-        });
-      }
-    }
-
     return navigator.mediaDevices.getUserMedia(constraints_json)
-      .then(handleMediaInitializeSuccess)
-      .catch(handleMediaInitializeError);
+      .then(handleMediaInitializeSuccess);
   }
 
   const initializeCamera = () => {
     initializeVideo().then(() => {
-      debugLog("Camera initilized.")
+      console.log("Camera initilized.");
       showBadIndicator();
-    }).catch((error) => {
-      setError(error.toString());
     });
   }
 
@@ -233,8 +201,8 @@ const Home = () => {
     payload.preface.resolution.width = imageWidth;
     payload.preface.resolution.height = imageHeight;
     AwareService.calculateROI(payload, endpoint_roi).then((res) => {
-      console.log(res);
-      initializeCamera();
+      console.log('requestROI response: ', res);
+      setAutocaptureROI(res.preface);
     });
   }
 
@@ -250,12 +218,15 @@ const Home = () => {
     let constraints= isMobileDevice() ? JSON.stringify(media_constraints_mobile_template) : JSON.stringify(media_constraints_desktop_template);
     constraints = replaceAll(constraints, "%IMAGE_WIDTH%", previewWidth);
     constraints = replaceAll(constraints, "%IMAGE_HEIGHT%", previewHeight);
-    setConstraints_json(constraints);
-
-
+    setConstraints_json(JSON.parse(constraints));
 
     requestROI();
   }, [cameraRef])
+
+  useEffect(() => {
+    console.log('autorequestROI: ', autocaptureROI);
+    initializeCamera();
+  }, [autocaptureROI])
 
   return (
     <ContainerPage>

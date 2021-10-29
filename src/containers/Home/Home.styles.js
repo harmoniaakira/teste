@@ -92,12 +92,15 @@ export const Camera = styled.video`
   left: 0;
   bottom: 0;
   right: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  filter: brightness(1.2);
+  object-fit: fill;
 `
 
 export const FrameWrapper = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 56px;
   left: 0;
   bottom: 0;
@@ -107,7 +110,7 @@ export const FrameWrapper = styled.div`
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 36px 0;
-  mix-blend-mode: hard-light;
+  mix-blend-mode: hard-light; */
 `
 
 export const Frame = styled.canvas`
@@ -115,6 +118,6 @@ export const Frame = styled.canvas`
   height: 335px;
   margin: auto;
   border-radius: 100%;
-  border: 3px dotted white; */
-	background-color: gray;
+  border: 3px dotted white; 
+	background-color: gray;*/
 `
