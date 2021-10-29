@@ -110,11 +110,11 @@ export const FrameWrapper = styled.div`
   mix-blend-mode: hard-light;
 `
 
-export const Frame = styled.div`
-  width: 250px;
+export const Frame = styled.canvas`
+  /* width: 250px;
   height: 335px;
   margin: auto;
   border-radius: 100%;
-  border: 3px dotted white;
+  border: 3px dotted white; */
 	background-color: gray;
 `
