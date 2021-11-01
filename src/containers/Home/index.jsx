@@ -190,6 +190,7 @@ const Home = () => {
     ctx.lineTo(roiX + roiWidth / 2 + radius, roiY + roiHeight - radius);
     ctx.strokeStyle = color;
     ctx.stroke();
+  }
 
   const handleMediaInitializeSuccess = (localMediaStream) => {
     console.log('1')
