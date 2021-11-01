@@ -21,10 +21,6 @@ const landscape_height = 720;
 const autocapture_roi_line_width = 5;
 const autocapture_roi_portrait_top_margin = 10;
 
-let appOrientation = "landscape"
-let previewWidth = (appOrientation === "portrait") ? portrait_width : landscape_width;
-let previewHeight = (appOrientation === "portrait") ? portrait_height : landscape_height;
-
 const calculateROI_payload = {
   preface: {
     profile: {
@@ -65,13 +61,15 @@ const constraintsInternalLandscape = {
 };
 
 const Home = () => {
-  const [autocaptureROI, setAutocaptureROI] = useState({
-    height: 0,
+  const [autocaptureROI, setAutocaptureROI] = useState({height: 0,
     width: 0,
     x: 0,
     y: 0
   })
-
+  const [constraints_json, setConstraints_json] = useState({video: true})
+  const [appOrientation, setAppOrientation] = useState(null)
+  const [previewWidth, setPreviewWidth] = useState(null)
+  const [previewHeight, setPreviewHeight] = useState(null)
   const [error, setError] = useState()
   const cameraRef = useRef(null)
   const frameRef = useRef(null)
@@ -193,8 +191,6 @@ const Home = () => {
     ctx.strokeStyle = color;
     ctx.stroke();
 
-  }
-
   const handleMediaInitializeSuccess = (localMediaStream) => {
     console.log('1')
     const video = cameraRef.current;
@@ -202,7 +198,7 @@ const Home = () => {
   }
 
   const initializeVideo = () => {
-    return navigator.mediaDevices.getUserMedia(constraintsInternalLandscape)
+    return navigator.mediaDevices.getUserMedia(constraints_json)
       .then(handleMediaInitializeSuccess);
   }
 
@@ -224,6 +220,19 @@ const Home = () => {
   }
 
   useEffect(() => {
+    let orientation = getURLParameter("resolution", isMobileDevice() ? "portrait" : "landscape");
+    setAppOrientation(orientation);
+
+    let prevWidth = (orientation === "portrait") ? portrait_width : landscape_width;
+    let prevHeight = (orientation === "portrait") ? portrait_height : landscape_height;
+    setPreviewWidth(prevWidth);
+    setPreviewHeight(prevHeight);
+
+    let constraints= isMobileDevice() ? JSON.stringify(media_constraints_mobile_template) : JSON.stringify(media_constraints_desktop_template);
+    constraints = replaceAll(constraints, "%IMAGE_WIDTH%", previewWidth);
+    constraints = replaceAll(constraints, "%IMAGE_HEIGHT%", previewHeight);
+    setConstraints_json(JSON.parse(constraints));
+
     requestROI();
   }, [cameraRef])
 
@@ -250,4 +259,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Home

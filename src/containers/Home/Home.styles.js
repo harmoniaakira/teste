@@ -89,6 +89,11 @@ export const CameraWrapper = styled.div`
 `
 
 export const Camera = styled.video`
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   transform: scaleX(-1);
@@ -111,10 +116,10 @@ export const FrameWrapper = styled.div`
 `
 
 export const Frame = styled.canvas`
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: auto;
-    align-content: center;
-    text-align: center;
+  /* width: 250px;
+  height: 335px;
+  margin: auto;
+  border-radius: 100%;
+  border: 3px dotted white; 
+	background-color: gray;*/
 `
